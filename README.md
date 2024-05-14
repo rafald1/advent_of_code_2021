@@ -41,3 +41,8 @@ I wrestled with the way Rust handles errors, trying different approaches:
 The first puzzle was straightforward.
 
 For part 2, I refactored the `process_data()` function. I arrived at a more concise version, albeit with a loss of performance.
+
+### [Day 2](https://adventofcode.com/2021/day/2)
+This puzzle was straightforward as well.
+
+I used an enum to define possible commands. In part 2, I refactored the way I process the input data in an attempt to make it more concise. I implemented `FromStr` for my enum. I lost some details when handling an error message and made the solution slower in the process. Nevertheless, I learned something new and had an additional chance to practice.

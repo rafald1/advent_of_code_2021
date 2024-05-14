@@ -1,10 +1,12 @@
 mod day_01_sonar_sweep;
+mod day_02_dive;
 
 fn main() {
     let solutions = [
         day_01_sonar_sweep::part_1::solve,
         day_01_sonar_sweep::part_2::solve,
-    ];
+        day_02_dive::part_1::solve,
+        day_02_dive::part_2::solve,    ];
 
     for solution in solutions {
         let start = std::time::Instant::now();
