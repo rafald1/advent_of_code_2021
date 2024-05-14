@@ -30,3 +30,14 @@ Note: I have been side-tracked by neovim, but as a result, I have knowledge abou
 - `fish` - a shell,
 - `eza` - a ls replacement,
 - `neovim` - I learned about LSP and rust-analyzer, making it a viable alternative for writing Rust code. The configurability is overwhelming, as is learning all the shortcuts, commands, and navigation.
+
+### [Day 1](https://adventofcode.com/2021/day/1)
+I wrestled with the way Rust handles errors, trying different approaches:
+- dealing with Rust's `Result` enum by using match and if statements,
+- the `.expect()` method,
+- the `.unwrap()` method,
+- `?` - this approach was the most enigmatic for me at this point, as I hadn't been exposed to it before.
+
+The first puzzle was straightforward.
+
+For part 2, I refactored the `process_data()` function. I arrived at a more concise version, albeit with a loss of performance.
