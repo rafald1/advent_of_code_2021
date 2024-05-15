@@ -46,3 +46,34 @@ For part 2, I refactored the `process_data()` function. I arrived at a more conc
 This puzzle was straightforward as well.
 
 I used an enum to define possible commands. In part 2, I refactored the way I process the input data in an attempt to make it more concise. I implemented `FromStr` for my enum. I lost some details when handling an error message and made the solution slower in the process. Nevertheless, I learned something new and had an additional chance to practice.
+
+### [Day 3](https://adventofcode.com/2021/day/3)
+Finally, a puzzle that gave me an opportunity to explore different approaches and spend time refactoring and learning. Refactoring part 2 significantly reduced duplication and made the code more readable.
+
+Thanks to `cargo clippy`, I learned even more:
+
+```text
+writing `&Vec` instead of `&[_]` involves a new object where a slice will do
+
+&Vec<String>
+^^^^^^^^^^^^ help: change this to: `&[String]`
+```
+
+### Update #1
+
+On this note, a git pre-commit hook works as intended, ensuring that Rust's built-in tools are used to help me with my code. I'm including my pre-commit hook in the `git/hooks/` folder.
+
+I have finished wrestling with Rust over my project structure. I'm including a `mod.rs` file in each puzzle solution folder to reduce the number of lines in `main.rs`. This way, I only need to include:
+```rust
+mod day_01_sonar_sweep;
+```
+instead of:
+```rust
+mod day_01_sonar_sweep {
+    pub mod part_1;
+    pub mod part_2;
+}
+```
+While I understand that moving all puzzle solution folders into a new folder could make it even more concise, I'm fine with adding a `mod.rs` file.
+
+At this stage, my tests for each puzzle are limited to running a solution on test data.

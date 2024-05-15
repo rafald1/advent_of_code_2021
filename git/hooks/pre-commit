@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -e
+
+echo "Executing: 'cargo check'."
+cargo check
+
+echo ""
+echo "Executing: 'cargo fmt --verbose -- --check'."
+if ! cargo fmt --verbose -- --check; then
+    echo ""
+    echo "Fix manually or run: 'cargo fmt'."
+    exit 1
+fi
+
+echo ""
+echo "Executing: 'cargo clippy --all-targets -- -D warnings'."
+cargo clippy --all-targets -- -D warnings
+
+echo ""
+echo "Executing: 'cargo test'."
+cargo test
+
