@@ -1,6 +1,7 @@
 mod day_01_sonar_sweep;
 mod day_02_dive;
 mod day_03_binary_diagnostic;
+mod day_04_giant_squid;
 
 fn main() {
     let solutions = [
@@ -10,6 +11,8 @@ fn main() {
         day_02_dive::part_2::solve,
         day_03_binary_diagnostic::part_1::solve,
         day_03_binary_diagnostic::part_2::solve,
+        day_04_giant_squid::part_1::solve,
+        day_04_giant_squid::part_2::solve,
     ];
 
     for solution in solutions {

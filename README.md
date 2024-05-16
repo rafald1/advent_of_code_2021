@@ -77,3 +77,6 @@ mod day_01_sonar_sweep {
 While I understand that moving all puzzle solution folders into a new folder could make it even more concise, I'm fine with adding a `mod.rs` file.
 
 At this stage, my tests for each puzzle are limited to running a solution on test data.
+
+### [Day 4](https://adventofcode.com/2021/day/4)
+Processing the input file was the more challenging part for me. It's crazy how you can endlessly chain all these methods when you try to process and shape your data. Just attempting to use these various methods consumed so much of my time. I decided to use a different approach in part 2 for processing data and used std::fs::read_to_string() instead of std::io::BufReader, which in this case allowed me to simplify my code.
