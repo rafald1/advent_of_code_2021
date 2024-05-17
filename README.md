@@ -83,3 +83,6 @@ Processing the input file was the more challenging part for me. It's crazy how y
 
 ### [Day 5](https://adventofcode.com/2021/day/5)
 My first implementation used HashMap, but it was running slower than expected. I also tried HashSet, but ended up using Vec to store vent positions. I decided to use structs and std::str::FromStr to handle input processing. Once again, processing the input file was the more challenging part for me. The chosen approach allowed me to practice error handling.
+
+### [Day 6](https://adventofcode.com/2021/day/6)
+This one was straightforward. Part 2 basically didn't require any modification. Part 1 contains my original solution and part 2 is refactored version.
