@@ -80,3 +80,6 @@ At this stage, my tests for each puzzle are limited to running a solution on tes
 
 ### [Day 4](https://adventofcode.com/2021/day/4)
 Processing the input file was the more challenging part for me. It's crazy how you can endlessly chain all these methods when you try to process and shape your data. Just attempting to use these various methods consumed so much of my time. I decided to use a different approach in part 2 for processing data and used std::fs::read_to_string() instead of std::io::BufReader, which in this case allowed me to simplify my code.
+
+### [Day 5](https://adventofcode.com/2021/day/5)
+My first implementation used HashMap, but it was running slower than expected. I also tried HashSet, but ended up using Vec to store vent positions. I decided to use structs and std::str::FromStr to handle input processing. Once again, processing the input file was the more challenging part for me. The chosen approach allowed me to practice error handling.
