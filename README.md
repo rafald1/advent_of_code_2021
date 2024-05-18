@@ -86,3 +86,6 @@ My first implementation used HashMap, but it was running slower than expected. I
 
 ### [Day 6](https://adventofcode.com/2021/day/6)
 This one was straightforward. Part 2 basically didn't require any modification. Part 1 contains my original solution and part 2 is refactored version.
+
+### [Day 7](https://adventofcode.com/2021/day/7)
+For part 1, it was easy to notice that the median would produce the correct answer. For part 2, I initially implemented a naive approach that required calculating fuel consumption for reaching each new position and choosing the minimum value. In the second implementation, I improved the calculation time by ceasing the calculation of fuel consumption values when they exceeded the current minimum value. The final version uses the mean to narrow the search for the minimum fuel consumption to two values: one produced by using the mean, and another by using the mean plus one as a new position.
