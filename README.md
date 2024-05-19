@@ -89,3 +89,19 @@ This one was straightforward. Part 2 basically didn't require any modification. 
 
 ### [Day 7](https://adventofcode.com/2021/day/7)
 For part 1, it was easy to notice that the median would produce the correct answer. For part 2, I initially implemented a naive approach that required calculating fuel consumption for reaching each new position and choosing the minimum value. In the second implementation, I improved the calculation time by ceasing the calculation of fuel consumption values when they exceeded the current minimum value. The final version uses the mean to narrow the search for the minimum fuel consumption to two values: one produced by using the mean, and another by using the mean plus one as a new position.
+
+### [Day 8](https://adventofcode.com/2021/day/8)
+Part 1 was straightforward, but properly processing the input posed a challenge for me. In part 2, decoding digits in the seven-segment display format was required. Initially, we were able to identify 4 out of 10 digits based on the length of the encoded digit. Then, using the identified digits 1 and 4, we assigned proper values to the remaining formatted digits.
+
+The pattern used to identify all digits is as follows:
+
+- if the formatted digit length is 2, the digit is 1,
+- if the formatted digit length is 3, the digit is 7,
+- if the formatted digit length is 4, the digit is 4,
+- if the formatted digit length is 7, the digit is 8,
+- if the formatted digit length is 6 and has 4 common sections with 4, the digit is 9,
+- if the formatted digit length is 6 and has 1 common section with 1, the digit is 6,
+- if the formatted digit length is 6 and has 2 common sections with 1, the digit is 0,
+- if the formatted digit length is 5 and has 2 common sections with 1, the digit is 3,
+- if the formatted digit length is 5 and has 2 common sections with 4, the digit is 2,
+- if the formatted digit length is 5 and has 3 common sections with 4, the digit is 5.

@@ -5,6 +5,7 @@ mod day_04_giant_squid;
 mod day_05_hydrothermal_venture;
 mod day_06_lanternfish;
 mod day_07_the_treachery_of_whales;
+mod day_08_seven_segment_search;
 
 fn main() {
     let solutions = [
@@ -22,6 +23,8 @@ fn main() {
         day_06_lanternfish::part_2::solve,
         day_07_the_treachery_of_whales::part_1::solve,
         day_07_the_treachery_of_whales::part_2::solve,
+        day_08_seven_segment_search::part_1::solve,
+        day_08_seven_segment_search::part_2::solve,
     ];
 
     for solution in solutions {
