@@ -105,3 +105,6 @@ The pattern used to identify all digits is as follows:
 - if the formatted digit length is 5 and has 2 common sections with 1, the digit is 3,
 - if the formatted digit length is 5 and has 2 common sections with 4, the digit is 2,
 - if the formatted digit length is 5 and has 3 common sections with 4, the digit is 5.
+
+### [Day 9](https://adventofcode.com/2021/day/9)
+Part 1 was straightforward and required checking up to four neighbors of each cell to determine if the required condition was met. Part 2, on the other hand, provided an opportunity to approach the problem in different ways. My first version used a HashMap, the second version used a HashSet, and the third and final version used a Vec to identify basins and their sizes. Although I ended up using Vec, I spent a lot of time experimenting with HashMap and HashSet.

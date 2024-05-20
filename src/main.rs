@@ -6,6 +6,7 @@ mod day_05_hydrothermal_venture;
 mod day_06_lanternfish;
 mod day_07_the_treachery_of_whales;
 mod day_08_seven_segment_search;
+mod day_09_smoke_basin;
 
 fn main() {
     let solutions = [
@@ -25,6 +26,8 @@ fn main() {
         day_07_the_treachery_of_whales::part_2::solve,
         day_08_seven_segment_search::part_1::solve,
         day_08_seven_segment_search::part_2::solve,
+        day_09_smoke_basin::part_1::solve,
+        day_09_smoke_basin::part_2::solve,
     ];
 
     for solution in solutions {
