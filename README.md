@@ -108,3 +108,6 @@ The pattern used to identify all digits is as follows:
 
 ### [Day 9](https://adventofcode.com/2021/day/9)
 Part 1 was straightforward and required checking up to four neighbors of each cell to determine if the required condition was met. Part 2, on the other hand, provided an opportunity to approach the problem in different ways. My first version used a HashMap, the second version used a HashSet, and the third and final version used a Vec to identify basins and their sizes. Although I ended up using Vec, I spent a lot of time experimenting with HashMap and HashSet.
+
+### [Day 10](https://adventofcode.com/2021/day/10)
+This was a straightforward and enjoyable puzzle. I used HashMaps to store symbol pairs and score values. It seems like a good time to take a break from solving puzzles and spend some time learning new tricks.
