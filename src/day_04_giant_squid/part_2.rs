@@ -8,10 +8,10 @@ struct Board {
 }
 
 impl Board {
-    fn from(numbers: &[u8]) -> Board {
+    fn from(numbers: &[Vec<u8>]) -> Board {
         let mut numbers_map: HashMap<u8, (u8, u8)> = HashMap::new();
 
-        for (index, number) in numbers.iter().enumerate() {
+        for (index, number) in numbers.iter().flatten().enumerate() {
             numbers_map.insert(*number, (index as u8 / 5u8, index as u8 % 5u8));
         }
 
@@ -44,24 +44,27 @@ impl Board {
 
 fn process_data(path: &str) -> (Vec<u8>, Vec<Board>) {
     let file_content = std::fs::read_to_string(path).unwrap();
-    let (drawn_numbers, bingo_boards) = file_content.split_once("\n\n").unwrap();
+    let mut lines = file_content.lines();
 
-    (
-        drawn_numbers
-            .split(',')
-            .map(|number| number.parse::<u8>().unwrap())
-            .collect(),
-        bingo_boards
-            .split("\n\n")
-            .map(|bingo_board| {
-                bingo_board
-                    .split_whitespace()
-                    .map(|number| number.parse::<u8>().unwrap())
-                    .collect::<Vec<u8>>()
-            })
-            .map(|board_numbers| Board::from(&board_numbers))
-            .collect::<Vec<Board>>(),
-    )
+    let drawn_numbers = lines
+        .next()
+        .unwrap()
+        .split(',')
+        .map(|number| number.parse::<u8>().unwrap())
+        .collect();
+    let bingo_boards = lines
+        .filter(|&line| !line.is_empty())
+        .map(|line| {
+            line.split_whitespace()
+                .map(|number| number.parse::<u8>().unwrap())
+                .collect::<Vec<u8>>()
+        })
+        .collect::<Vec<Vec<u8>>>()
+        .chunks(5)
+        .map(Board::from)
+        .collect::<Vec<Board>>();
+
+    (drawn_numbers, bingo_boards)
 }
 
 fn play_bingo(drawn_numbers: Vec<u8>, mut bingo_boards: Vec<Board>) -> u32 {
