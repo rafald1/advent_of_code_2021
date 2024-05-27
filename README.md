@@ -111,3 +111,6 @@ Part 1 was straightforward and required checking up to four neighbors of each ce
 
 ### [Day 10](https://adventofcode.com/2021/day/10)
 This was a straightforward and enjoyable puzzle. I used HashMaps to store symbol pairs and score values. It seems like a good time to take a break from solving puzzles and spend some time learning new tricks.
+
+### Update #2
+I added two GitHub workflows: one for fmt and Clippy, and another for testing on different operating systems. One of the tests failed on Windows OS due to the problematic code `.split_once("\n\n")`, which I have since fixed. I also added branch protection rules for the main branch. Additionally, I got sidetracked and spent some time learning about property testing and the Proptest framework.
