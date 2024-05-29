@@ -114,3 +114,8 @@ This was a straightforward and enjoyable puzzle. I used HashMaps to store symbol
 
 ### Update #2
 I added two GitHub workflows: one for fmt and Clippy, and another for testing on different operating systems. One of the tests failed on Windows OS due to the problematic code `.split_once("\n\n")`, which I have since fixed. I also added branch protection rules for the main branch. Additionally, I got sidetracked and spent some time learning about property testing and the Proptest framework.
+
+### [Day 11](https://adventofcode.com/2021/day/11)
+This was an enjoyable puzzle. I decided to use a 2D array to store the input, which was a 10x10 grid. After some effort and trying different approaches, I found the `.try_into().expect()` combo to transform a vector into an array. The puzzle was more complicated than anticipated, requiring tracking of octopuses that flashed each round. Initially, I used HashSet for tracking, but eventually switched to another 2D array for significant performance gains.
+
+Part 2 required only a few modifications. I optimized the way I stored neighbors of each cell by switching from `[[Vec<(usize, usize)>; 10]; 10]` to `[[[Option<(usize, usize)>; 8]; 10]; 10]`. This sped things up and helped me get more familiar with the `Option` type. This change led Clippy to issue a warning: "very complex type used. Consider factoring parts into type definitions". I followed this advice and used `type Grid<T> = [[T; 10]; 10]`, which indeed simplified things.
