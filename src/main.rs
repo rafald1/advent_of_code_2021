@@ -9,6 +9,7 @@ mod day_08_seven_segment_search;
 mod day_09_smoke_basin;
 mod day_10_syntax_scoring;
 mod day_11_dumbo_octopus;
+mod day_12_passage_pathing;
 
 fn main() {
     let solutions = [
@@ -34,6 +35,8 @@ fn main() {
         day_10_syntax_scoring::part_2::solve,
         day_11_dumbo_octopus::part_1::solve,
         day_11_dumbo_octopus::part_2::solve,
+        day_12_passage_pathing::part_1::solve,
+        day_12_passage_pathing::part_2::solve,
     ];
 
     for solution in solutions {
