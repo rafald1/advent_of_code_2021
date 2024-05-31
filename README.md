@@ -125,3 +125,7 @@ There were a lot of challenges. The first one was processing the data. I still f
 
 In Part 2, things got interesting. A simple criterion change increased the possible combinations in my case from roughly 4,000 to over 100,000, significantly increasing the time required to find the solution by a factor of 30. Getting a proper solution wasn't straightforward and required a lot of time spent debugging the issue of missing paths for the example input. After finding a working solution, I spent time increasing the readability of the code and reducing the time needed to find the solution. I got rid of the `HashMap` and found a better way to store input data by using a struct and enum to represent each cave and a vector to store them.
 
+### [Day 13](https://adventofcode.com/2021/day/13)
+Part 1 was straightforward. I used a struct, an enum, and a HashSet to store input information. Refactoring helped me find a more concise way of folding, which improved readability.
+
+Part 2 required outputting the data to the screen after folding to get the puzzle answer. While refactoring, I replaced the HashSet with a vector and used `.dedup()` to remove duplicates, which improved performance.
