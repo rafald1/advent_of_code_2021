@@ -11,6 +11,7 @@ mod day_10_syntax_scoring;
 mod day_11_dumbo_octopus;
 mod day_12_passage_pathing;
 mod day_13_transparent_origami;
+mod day_14_extended_polymerization;
 
 fn main() {
     let solutions = [
@@ -40,6 +41,8 @@ fn main() {
         day_12_passage_pathing::part_2::solve,
         day_13_transparent_origami::part_1::solve,
         day_13_transparent_origami::part_2::solve,
+        day_14_extended_polymerization::part_1::solve,
+        day_14_extended_polymerization::part_2::solve,
     ];
 
     for solution in solutions {
