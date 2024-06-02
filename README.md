@@ -132,3 +132,11 @@ Part 2 required outputting the data to the screen after folding to get the puzzl
 
 ### [Day 14](https://adventofcode.com/2021/day/14)
 Finishing part 1 and getting access to part 2 made me realize that my brute force solution for part 1 was still too slow, even after replacing HashMaps with arrays, which actually made the solution run four times faster. After thinking about how to solve it differently, I realized that I could insert in bulk only for each different character pair. I changed the representation of the polymer from a `String` to a `HashMap<(char, char), usize>` and stored character pairs with the number of occurrences. I encountered an issue in the final step when counting the occurrence of each individual character. Depending on the method of counting, my final count was missing either the first character or the last character of the original polymer. I thought I could get away without passing additional information when processing the input file, but in cases where the first and last characters were the same, I wasn't able to get a proper count of each character. After a lot of refactoring, the final version emerged. I added the original polymer to be returned as well and used it to calculate the correct character occurrences. I restructured the code to make it more readable.
+
+### [Day 15](https://adventofcode.com/2021/day/15)
+This was a shortest path problem in an undirected weighted graph. I wanted to implement Dijkstra's algorithm using a priority queue. I learned a few new things:
+* `BinaryHeap` from collections - which is a priority queue implemented with a binary heap. The `.pop()` method from `BinaryHeap` removes the largest item, not the smallest one as in Python.
+* `Reverse` from `cmp` - allowed me to get the shortest path instead of the longest path with the way `BinaryHeap` works.
+* `wrapping_sub` - was a nice alternative when validating neighbors of the current vertex.
+
+Part 2 increased the number of vertices from 1,000 to 25,000 by duplicating the original ones and introduced a change to the cost of moving between new vertices, which turned out to be challenging to implement concisely.
