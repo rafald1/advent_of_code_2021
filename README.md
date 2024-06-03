@@ -140,3 +140,6 @@ This was a shortest path problem in an undirected weighted graph. I wanted to im
 * `wrapping_sub` - was a nice alternative when validating neighbors of the current vertex.
 
 Part 2 increased the number of vertices from 1,000 to 25,000 by duplicating the original ones and introduced a change to the cost of moving between new vertices, which turned out to be challenging to implement concisely.
+
+### [Day 16](https://adventofcode.com/2021/day/16)
+This challenge involved writing a parser, parsing the input, and following a set of calculations to get a result from these operations. Part 1 was about correctly splitting the input data (packet) into sub-packets, omitting some details for simplicity's sake. It took a lot of time to go through all the instructions to ensure that the parser was working properly. I used a recursive function to split and parse sub-packets. I decided to use a `String` and consume it while parsing, which allowed me to practice and better understand Rust's unique ownership feature. Getting part 2 working was smooth sailing. I refactored and structured the code to make it easier to understand.

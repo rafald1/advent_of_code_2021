@@ -13,6 +13,7 @@ mod day_12_passage_pathing;
 mod day_13_transparent_origami;
 mod day_14_extended_polymerization;
 mod day_15_chiton;
+mod day_16_packet_decoder;
 
 fn main() {
     let solutions = [
@@ -46,6 +47,8 @@ fn main() {
         day_14_extended_polymerization::part_2::solve,
         day_15_chiton::part_1::solve,
         day_15_chiton::part_2::solve,
+        day_16_packet_decoder::part_1::solve,
+        day_16_packet_decoder::part_2::solve,
     ];
 
     for solution in solutions {
