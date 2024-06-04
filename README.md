@@ -143,3 +143,36 @@ Part 2 increased the number of vertices from 1,000 to 25,000 by duplicating the 
 
 ### [Day 16](https://adventofcode.com/2021/day/16)
 This challenge involved writing a parser, parsing the input, and following a set of calculations to get a result from these operations. Part 1 was about correctly splitting the input data (packet) into sub-packets, omitting some details for simplicity's sake. It took a lot of time to go through all the instructions to ensure that the parser was working properly. I used a recursive function to split and parse sub-packets. I decided to use a `String` and consume it while parsing, which allowed me to practice and better understand Rust's unique ownership feature. Getting part 2 working was smooth sailing. I refactored and structured the code to make it easier to understand.
+
+### [Day 17](https://adventofcode.com/2021/day/17)
+Part 1 was more of a mathematical problem than anything else. We were launching a probe from coordinates (0, 0) with velocity V<sub>x</sub> and V<sub>y</sub>. Velocity could only be an integer value and decreased by 1 each turn. For V<sub>x</sub>, it stopped decreasing when it reached 0, but for V<sub>y</sub> there was no such limitation, and negative V<sub>y</sub> indicated that the probe was moving downwards rather than upwards. The probe was supposed to end up in a rectangular landing area, described by x1, x2, y1, and y2 values. The landing area was lower than the starting point of our probe. The task here was to calculate the highest y position the probe could reach.
+
+My reasoning:
+- To go higher than your starting position (y=0), your velocity V<sub>y</sub> has to be greater than 0.
+- If we start with V<sub>y</sub> = 4, then our velocity will decrease each turn by 1, so: 4, 3, 2, 1, 0, -1, -2, -3, -4, -5, and so on.
+- The highest y you will reach is: 4 + 3 + 2 + 1, which is 10. So if you start with velocity V<sub>y</sub> = 5, you will reach 15; V<sub>y</sub> = 6 will get us 21.
+- Instead of adding all these numbers, we can use the triangular number formula T<sub>n</sub> = n * (n + 1) / 2 to calculate the maximum y our probe will reach, knowing the starting velocity V<sub>y</sub>.
+- Our probe reaches the highest y, and now our velocity V<sub>y</sub> starts to have negative values as our probe moves downwards. At one point, the probe will reach the level from which it was launched. So our velocity V<sub>y</sub> changes like this: 4, 3, 2, 1, 0, -1, -2, -3, -4, and we are at the same level from which we launched the probe.
+- Now we should notice that our velocity has the exact opposite value to the starting one. We started with velocity V<sub>y</sub> = 4, and now V<sub>y</sub> = -4 (next turn it will decrease by 1 again and will move our probe below the starting level).
+- At this point, if our velocity indicating downward movement is too high, our probe will miss the landing area and end up below it.
+- The highest possible velocity V<sub>y</sub> we can have is equal to the bottom y value of the landing area + 1 (y1 or y2 depending on their values; for our purpose y<sub>min</sub> is the minimum value of y1 and y2, so our velocity V<sub>y</sub> has to be y<sub>min</sub> + 1).
+- If our probe has velocity V<sub>y</sub> = y<sub>min</sub> + 1 (we are still at the level of launching our probe, y = 0), it means that our probe's starting velocity was V<sub>y</sub> = -(y<sub>min</sub> + 1).
+- It also means the highest y our probe will reach is -(y<sub>min</sub> + 1) * (-(y<sub>min</sub> + 1) + 1) / 2, which is the solution.
+- If you transform it further, -(y<sub>min</sub> + 1) * (-y<sub>min</sub> - 1 + 1) / 2 -> -(y<sub>min</sub> + 1) * -y<sub>min</sub> / 2 -> and final form: y<sub>min</sub> * (y<sub>min</sub> + 1) / 2, which I chose not to do in my code.
+- Omitting velocity V<sub>x</sub>: our probe has to have the correct starting V<sub>x</sub> to reach the landing area. When V<sub>x</sub> reaches 0, our probe is moving only upwards and downwards. Because we want to reach the highest possible y, our probe has to still be moving upwards when we are over the landing area and continue to climb as long as possible before it starts to plummet straight down. In this case, velocity V<sub>x</sub> doesn't influence how high our probe can climb. The probe follows an initial curved trajectory with both horizontal and vertical components, transitioning to a purely vertical ascent and finally vertical descent.
+
+To sum it up: if you have a different starting velocity than V<sub>y</sub> = -(y<sub>min</sub> + 1), your probe either misses the landing area (ends up below it) or the highest point y it reaches is lower.
+
+<p style="color: red; font-weight: bold;">Notes:</p>
+Claims that he is doing Advent of Code to learn Rust, spends a few hours doing math to come up with a fancy solution, which robs him of the opportunity to code in Rust, and spends an additional hour writing the explanation for using a fancy-looking formula.
+
+In part 2, I decided to find a way to reduce the number of possible values of velocity V<sub>x</sub> as it was easy to spot for me.
+
+My reasoning:
+- Your probe has to have a minimum velocity V<sub>x</sub> to be able to reach the landing site or end up over it.
+- With minimum velocity V<sub>x</sub>, your probe will need as many turns to get in position. Starting velocity V<sub>x</sub> = 4 means your probe after 4 turns will reach position x = 10 (0 -> 4 -> 7 -> 9 -> 10).
+- Your probe can reach the landing site before its velocity V<sub>x</sub> reaches 0, meaning if your probe's starting velocity V<sub>x</sub> is equal to or greater than x1 and less than or equal to x2, it will get there in 1 turn.
+
+That allowed me to reduce all possible velocities V<sub>x</sub> by 60%.
+
+I wasn't able to find a way to reduce possible velocities V<sub>y</sub>, leaving my search area as `y_min..=-(y_min + 1)`. I used brute force to find all possible velocity pairs.
