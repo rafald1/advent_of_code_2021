@@ -15,6 +15,7 @@ mod day_14_extended_polymerization;
 mod day_15_chiton;
 mod day_16_packet_decoder;
 mod day_17_trick_shot;
+mod day_18_snailfish;
 
 fn main() {
     let solutions = [
@@ -52,6 +53,8 @@ fn main() {
         day_16_packet_decoder::part_2::solve,
         day_17_trick_shot::part_1::solve,
         day_17_trick_shot::part_2::solve,
+        day_18_snailfish::part_1::solve,
+        day_18_snailfish::part_2::solve,
     ];
 
     for solution in solutions {
