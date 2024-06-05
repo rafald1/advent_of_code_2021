@@ -176,3 +176,8 @@ My reasoning:
 That allowed me to reduce all possible velocities V<sub>x</sub> by 60%.
 
 I wasn't able to find a way to reduce possible velocities V<sub>y</sub>, leaving my search area as `y_min..=-(y_min + 1)`. I used brute force to find all possible velocity pairs.
+
+### [Day 18](https://adventofcode.com/2021/day/18)
+This was a very challenging puzzle. Many complex operations had to be performed, starting with processing the input and choosing the proper way to store data, which influenced how complex other operations could be. I tried different approaches and ended up using a `Vec<(u8, usize)>` to represent the snailfish number, which stored the depth (the number of square brackets in which the number was placed) and the value. Necessary operations included: joining two snailfish numbers, exploding the joined number, splitting it, and calculating the magnitude when the final form, after all required exploding and splitting, was reached.
+
+Part 2 revealed that my function that calculated the magnitude for some snailfish numbers could loop infinitely due to a missing break statement. This statement allowed the process to restart checking from index 0 rather than continuing from the current index when a transformation occurred.
