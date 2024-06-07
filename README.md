@@ -181,3 +181,28 @@ I wasn't able to find a way to reduce possible velocities V<sub>y</sub>, leaving
 This was a very challenging puzzle. Many complex operations had to be performed, starting with processing the input and choosing the proper way to store data, which influenced how complex other operations could be. I tried different approaches and ended up using a `Vec<(u8, usize)>` to represent the snailfish number, which stored the depth (the number of square brackets in which the number was placed) and the value. Necessary operations included: joining two snailfish numbers, exploding the joined number, splitting it, and calculating the magnitude when the final form, after all required exploding and splitting, was reached.
 
 Part 2 revealed that my function that calculated the magnitude for some snailfish numbers could loop infinitely due to a missing break statement. This statement allowed the process to restart checking from index 0 rather than continuing from the current index when a transformation occurred.
+
+### [Day 19](https://adventofcode.com/2021/day/19)
+This was an overwhelming puzzle. I got a working version after 8 hours of struggle and spent another 10 hours refactoring and experimenting.
+
+Steps I took:
+- I used structs to store scanner data:
+  - Vec for beacon locations.
+  - HashSet to store calculated distances, allowing easy comparison between two scanners' data by creating intersections and assessing if there were enough common distances.
+  - HashMap to store calculated distances and corresponding beacon pairs.
+- I calculated 300 (25 * 24 / 2) pairwise distances between points for each scanner. Due to unknown rotations, I calculated the absolute distance between each x, y, and z and sorted the values.
+- I compared the HashSets containing pairwise distances between scanners. Since there should be at least 12 common points representing beacons between two scanner reports to join them, there should be 66 (12 * 11 / 2) matching pairwise distances. I was concerned there might be fewer because some calculated distances might not be unique. Regardless, finding fewer than 66 would not negatively impact the process.
+- I matched the beacons between two scanners. Despite spending a lot of time trying to find a better way, I couldn't. Since there was no guarantee that a pair of beacons from two scanners would be in the same configuration—meaning (beacon A, beacon B) could be (beacon B, beacon A) in another—I decided to record the number of occurrences. I noticed that beacon A was matched 11 times with one particular beacon and only once with others. This information allowed me to form proper pairs of beacons between the two scanners. Missing a few out of 66 pairwise distances wouldn't impact the process of forming beacon pairs.
+- I determined the rotation of the other scanner based on two pairs of beacons. I spent a lot of time struggling with this part. The process went like this:
+  - I had beacon A and beacon B as seen by scanner 0 and the same beacon A and beacon B as seen by the other scanner.
+  - I calculated the distance between A and B for scanner 0 and the other scanner.
+  - I had three values corresponding to x, y, and z for scanner 0 and x, y, and z for the other scanner. Since I calculated the distance between the same two beacons, the values would be the same but could be opposite or swapped.
+  - I created an array with 24 possible orientations and checked which one was correct.
+  - This information was returned and used to transform all beacons seen by the other scanner.
+- I determined the displacement of the beacons seen by the other scanner. I took the same beacon seen by scanner 0 and the other scanner. I rotated the position of the beacon seen by the other scanner using the information from the previous step. When the orientation matched, I calculated the distance between beacon A as seen by scanner 0 and beacon A as seen by the other scanner. The calculated values represented the other scanner's location and were used later to align all beacons seen by the other scanner. I did an additional check right away because it was hard to believe it was enough to use just one beacon. It turned out to be easier than expected.
+- With the information on how to rotate and align, I went through each beacon seen by the other scanner and rotated and aligned them.
+- I merged beacons from the other scanner into the beacons of scanner 0 and kept only unique beacons.
+- I recalculated pairwise distances for beacons in scanner 0.
+- I continued comparing scanner data until all beacons were merged into scanner 0.
+
+For part 1, the answer is the number of beacons in scanner 0. For part 2, I calculated the distances between scanners for each possible combination and found the maximum distance between two scanner positions.
