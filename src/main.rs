@@ -17,6 +17,7 @@ mod day_16_packet_decoder;
 mod day_17_trick_shot;
 mod day_18_snailfish;
 mod day_19_beacon_scanner;
+mod day_20_trench_map;
 
 fn main() {
     let solutions = [
@@ -58,6 +59,8 @@ fn main() {
         day_18_snailfish::part_2::solve,
         day_19_beacon_scanner::part_1::solve,
         day_19_beacon_scanner::part_2::solve,
+        day_20_trench_map::part_1::solve,
+        day_20_trench_map::part_2::solve,
     ];
 
     for solution in solutions {

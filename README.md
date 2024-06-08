@@ -206,3 +206,14 @@ Steps I took:
 - I continued comparing scanner data until all beacons were merged into scanner 0.
 
 For part 1, the answer is the number of beacons in scanner 0. For part 2, I calculated the distances between scanners for each possible combination and found the maximum distance between two scanner positions.
+
+### [Day 20](https://adventofcode.com/2021/day/20)
+This puzzle was more complicated than it initially appeared. The challenge involved handling an infinite number of pixels and dealing with the algorithm's sneaky behavior. For your input data, the algorithm had the following behaviors:
+- If a group of 9 pixels contained all unlit pixels, it would produce a lit pixel.
+- If a group of 9 pixels contained only lit pixels, it would produce an unlit pixel.
+
+The test data was free of such behavior, so the first solution might have worked on the test data but failed on the input data. This forced me to investigate and understand the algorithm's behavior, which was part of the challenge.
+
+My initial implementation used a `HashSet` to track lit pixels and an `enum` to indicate the current state of unseen pixels. During refactoring, I converted the `enum` to a `struct` and assigned `true` and `false` values to represent the states. This change simplified the code and improved readability.
+
+Part 2 required processing pixels 50 times instead of 2, revealing that the `HashSet` solution was slow. I switched to using a `Vec` and stored all pixels instead of only the lit ones. Checking if a `HashSet` contains a pixel is more time-consuming than just fetching the value from a `Vec`, so the final solution was significantly faster.
