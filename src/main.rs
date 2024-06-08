@@ -65,9 +65,9 @@ fn main() {
 
     for solution in solutions {
         let start = std::time::Instant::now();
-        // for _ in 0..999 {
-        //     solution();
-        // }
+        for _ in 0..999 {
+            solution();
+        }
         let result = solution();
         let duration = start.elapsed();
         println!(
