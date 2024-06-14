@@ -20,6 +20,7 @@ mod day_19_beacon_scanner;
 mod day_20_trench_map;
 mod day_21_dirac_dice;
 mod day_22_reactor_reboot;
+mod day_23_amphipod;
 
 fn main() {
     let solutions = [
@@ -67,6 +68,8 @@ fn main() {
         day_21_dirac_dice::part_2::solve,
         day_22_reactor_reboot::part_1::solve,
         day_22_reactor_reboot::part_2::solve,
+        day_23_amphipod::part_1::solve,
+        day_23_amphipod::part_2::solve,
     ];
 
     for solution in solutions {
