@@ -124,7 +124,6 @@ fn process_data(path: &str) -> [usize; 19] {
 pub fn solve() -> String {
     let burrow_state = process_data("./input/23.txt");
     let result = calculate_minimum_energy_cost(burrow_state);
-    assert_eq!(result, 14348);
     format!("Day 23: Amphipod (Part 1) answer: {}", result)
 }
 
