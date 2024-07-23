@@ -235,3 +235,8 @@ The process of finding valid paths was as follows:
 - For each hallway state that isn't directly in front of a room [0, 1, 3, 5, 7, 9, 10], I would try to construct a valid move.
 - If the state of the hallway location indicated it was occupied, I would move this amphipod to its destination room if possible: there was space in the room, it wasn't occupied by a different type of amphipod, and the path was unobstructed.
 - If the state of the hallway location indicated it was empty, I would try to move the top amphipod from each room, but only if the path was unobstructed, the amphipod was in the wrong room, or the amphipod was in the correct room but the amphipod underneath it wasn't in its home room.
+
+### [Day 24](https://adventofcode.com/2021/day/24)
+I had to spend more time than usual to properly understand what needed to be done to solve this puzzle. The input contained instructions used to calculate four values based on each digit of a 14-digit number. The recursive function to check every possible number until the required condition was met was straightforward, but too slow to be feasible.
+
+To speed up the process, I needed to implement memoization. I struggled to figure out how to add it on my own and had to search for hints. Adding memoization made a significant difference, allowing me to find the solution for part 1 in less than a second and for part 2, with an additional change to what was stored in memoization, in less than 10 seconds. This was a computation-heavy puzzle that was impossible to solve by brute force.
