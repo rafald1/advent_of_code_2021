@@ -21,6 +21,7 @@ mod day_20_trench_map;
 mod day_21_dirac_dice;
 mod day_22_reactor_reboot;
 mod day_23_amphipod;
+mod day_24_arithmetic_logic_unit;
 
 fn main() {
     let solutions = [
@@ -70,19 +71,18 @@ fn main() {
         day_22_reactor_reboot::part_2::solve,
         day_23_amphipod::part_1::solve,
         day_23_amphipod::part_2::solve,
+        day_24_arithmetic_logic_unit::part_1::solve,
+        day_24_arithmetic_logic_unit::part_2::solve,
     ];
 
     for solution in solutions {
         let start = std::time::Instant::now();
-        for _ in 0..999 {
-            solution();
-        }
         let result = solution();
         let duration = start.elapsed();
         println!(
-            "{} Solved on average in {:.3}ms.",
+            "{} Solved in {:.3}ms.",
             result,
-            duration.as_secs_f64()
+            duration.as_secs_f64() * 1000_f64
         );
     }
 }
