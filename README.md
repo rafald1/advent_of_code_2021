@@ -240,3 +240,6 @@ The process of finding valid paths was as follows:
 I had to spend more time than usual to properly understand what needed to be done to solve this puzzle. The input contained instructions used to calculate four values based on each digit of a 14-digit number. The recursive function to check every possible number until the required condition was met was straightforward, but too slow to be feasible.
 
 To speed up the process, I needed to implement memoization. I struggled to figure out how to add it on my own and had to search for hints. Adding memoization made a significant difference, allowing me to find the solution for part 1 in less than a second and for part 2, with an additional change to what was stored in memoization, in less than 10 seconds. This was a computation-heavy puzzle that was impossible to solve by brute force.
+
+### [Day 25](https://adventofcode.com/2021/day/25)
+This puzzle was straightforward but provided an opportunity to experiment with different approaches before finalizing my solution. I used a `Vec<Vec<char>>` to represent the seafloor and iterated to find all sea cucumbers that could be moved. Then, I updated the seafloor based on their new positions. By iterating and updating in separate steps, I avoided the need to clone the seafloor (`Vec<Vec<char>>`), which enhanced the solution's efficiency and speed.
