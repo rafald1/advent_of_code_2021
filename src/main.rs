@@ -22,6 +22,7 @@ mod day_21_dirac_dice;
 mod day_22_reactor_reboot;
 mod day_23_amphipod;
 mod day_24_arithmetic_logic_unit;
+mod day_25_sea_cucumber;
 
 fn main() {
     let solutions = [
@@ -73,6 +74,7 @@ fn main() {
         day_23_amphipod::part_2::solve,
         day_24_arithmetic_logic_unit::part_1::solve,
         day_24_arithmetic_logic_unit::part_2::solve,
+        day_25_sea_cucumber::part_1::solve,
     ];
 
     for solution in solutions {
